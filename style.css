@@ -1,0 +1,288 @@
+:root {
+    --bg-color: #f8f9fa;
+    --sidebar-bg: #2c3e50;
+    --sidebar-color: #ecf0f1;
+    --main-text-color: #2c3e50;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --active-color: #3498db;
+    --header-bg: #ffffff;
+    --header-text-color: #34495e;
+}
+
+body.dark-mode {
+    --bg-color: #1e1e2d;
+    --sidebar-bg: #2a2a3a;
+    --sidebar-color: #e0e0e0;
+    --main-text-color: #e0e0e0;
+    --card-bg: #2a2a3a;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    --active-color: #5d9cec;
+    --header-bg: #2a2a3a;
+    --header-text-color: #e0e0e0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    margin: 0;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+}
+
+#sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-color);
+    transition: all 0.3s ease;
+    box-shadow: 2px 0 5px var(--card-shadow);
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+#sidebar .logo {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #34495e;
+}
+#sidebar .logo h4 {
+    margin: 0;
+    color: var(--sidebar-color);
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+#sidebar .logo h4 sup {
+    font-size: 0.5em;
+    vertical-align: super;
+    color: var(--active-color);
+}
+#sidebar .nav-link {
+    color: var(--sidebar-color);
+    cursor: pointer;
+    user-select: none;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: background-color 0.2s, color 0.2s, border-left-color 0.2s;
+}
+#sidebar .nav-link:hover,
+#sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-left: 5px solid var(--active-color);
+    transform: scale(1.02);
+}
+#sidebar .nav-link.active {
+    font-weight: 600;
+}
+#sidebar .nav-link i {
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+#sidebar .nav-link.active i {
+    color: var(--active-color);
+}
+#sidebar .nav-item:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.dark-mode-toggle {
+    margin-top: auto;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #34495e;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    color: var(--sidebar-color);
+    transition: background-color 0.2s;
+}
+.dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+main {
+    flex-grow: 1;
+    background-color: var(--bg-color);
+    overflow-y: auto;
+    margin-left: 250px;
+    transition: margin-left 0.3s ease, background-color 0.3s ease;
+    color: var(--main-text-color);
+}
+
+.main-header {
+    background-color: var(--header-bg);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.main-header h2 {
+    margin: 0;
+    font-weight: 600;
+}
+.main-header h2 i {
+    margin-right: 0.5rem;
+}
+.main-header #current-datetime {
+    font-weight: 400;
+    color: var(--header-text-color);
+    font-size: 0.9rem;
+}
+.main-content-body {
+    padding: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--main-text-color);
+}
+button {
+    font-weight: 600;
+}
+
+.home-content {
+    margin-top: 5vh;
+}
+.home-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.home-content .info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.info-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px var(--card-shadow);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    text-align: center;
+}
+.info-card:hover {
+    transform: translateY(-5px);
+}
+.info-card i {
+    font-size: 3rem;
+    color: var(--active-color);
+    margin-bottom: 1rem;
+}
+.info-card h4 {
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.5rem;
+}
+.info-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.filter-form {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card {
+    border-left: 5px solid var(--active-color);
+    background-color: var(--card-bg);
+    color: var(--main-text-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px var(--card-shadow);
+}
+.card-title {
+    font-weight: 600;
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--main-text-color);
+    transition: color 0.3s ease;
+}
+.hamburger-menu:hover {
+    color: var(--active-color);
+}
+body.dark-mode .hamburger-menu {
+    color: var(--header-text-color);
+}
+
+@media (max-width: 992px) {
+    #sidebar {
+        left: -250px;
+    }
+    #sidebar.active {
+        left: 0;
+    }
+    main {
+        margin-left: 0;
+    }
+    main.active {
+        margin-left: 250px;
+    }
+    .hamburger-menu {
+        display: block;
+    }
+    .main-header {
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+.dropdown-item {
+    cursor: pointer;
+    white-space: normal;
+}
+.dropdown-item:active, .dropdown-item:focus {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+.form-check {
+    padding-left: 0;
+}
+.form-check-input {
+    margin-right: 0.5rem;
+}
+
+/* Custom style for dropdown buttons */
+.btn-custom-filter {
+    background-color: #ffffff;
+    color: #212529;
+    border-color: #ced4da;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-custom-filter:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+}
+.dark-mode .btn-custom-filter {
+    background-color: #ffffff;
+    color: #212529;
+    border-color: #ced4da;
+}
+.dark-mode .btn-custom-filter:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+}
